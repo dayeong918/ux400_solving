@@ -1,0 +1,103 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:t="sap.ui.table">
+    <Dialog id="addDialog" beforeOpen ="addInput">
+        <content>
+            <!-- <HBox 
+                height="250px" 
+                alignItems="Center"
+                justifyContent="Center"> -->
+                <t:Table
+                    rows="{/Products}"
+                    selectionMode="MultiToggle"
+                    visibleRowCount="5"
+                    paste="onPaste"
+                    ariaLabelledBy="title2">
+				<t:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title2" text="Products"/>
+					</OverflowToolbar>
+				</t:extension>
+				<t:columns>
+					<t:Column>
+						<Label text="ProductID" /> 
+						<t:template>
+							<Text text="{ProductID}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column width="200px" hAlign="Center">
+						<Label text="ProductName" width="15rem" />
+						<t:template>
+							<Text text="{ProductName}"/>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="SupplierID" />
+						<t:template>
+							<Label text="{SupplierID}" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="CategoryID" />
+						<t:template>
+							<Text text="{CategoryID}" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="QuantityPerUnit" />
+						<t:template>
+							<Text text="{QuantityPerUnit}" />
+						</t:template>
+					</t:Column>
+					<t:Column hAlign="Right">
+						<Label text="UnitPrice" />
+						<t:template>
+							<Text text="{UnitPrice}" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="UnitsInStock" />
+						<t:template>
+							<Text text="{UnitsInStock}" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="UnitsOnOrder" />
+						<t:template>
+							<Text text="{UnitsOnOrder}" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="ReorderLevel" />
+						<t:template>
+							<Text text="{ReorderLevel}" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="Discontinued" />
+						<t:template>
+							<Text text="{
+                                path : 'Discontinued',
+                                formatter:'.formatter.transformDiscontinued'
+                                }" />
+						</t:template>
+					</t:Column>
+                    <t:Column>
+						<Label text="Status" />
+						<t:template>
+							<core:Icon
+                                src="{=(${UnitPrice} >= 15) ? 'sap-icon://thumb-up' : 'sap-icon://thumb-down'}"
+                                color="{=(${UnitPrice} >= 15) ? 'rgb(27, 234, 33)' : 'rgb(234, 52, 27)'}" 
+                            />
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+        </content>
+        <endButton>
+                <Button text="close" press=".onClose"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
